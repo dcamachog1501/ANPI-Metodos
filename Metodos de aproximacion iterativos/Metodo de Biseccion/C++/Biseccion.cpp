@@ -1,13 +1,13 @@
-#include "cmath"
 #include <iostream>
-#include <ginac/ginac.h>
+#include<ginac/ginac.h>
+#include "cmath"
 
 using namespace std;
 using namespace GiNaC;
 
-
 ex funct(string f,ex value)
 {
+
     symbol x;
     symtab table;
     table["x"]=x;
@@ -15,8 +15,7 @@ ex funct(string f,ex value)
     ex expresion=reader(f);
     return evalf(expresion.subs(x==value));
 }
-
-vector<ex> biseccion(ex a,ex b,string f,ex tol,int iterMax)
+vector<ex>biseccion(ex a,ex b,string f,ex tol,int iterMax)
 {
     vector<ex> output;
     if(funct(f,a)*funct(f,b)<0)
@@ -26,9 +25,8 @@ vector<ex> biseccion(ex a,ex b,string f,ex tol,int iterMax)
         ex error;
         while(k<iterMax)
         {
-            xk=(a+b)/2;
-            xk=xk.evalf();
-            error= funct(f,xk);
+            xk=evalf((a+b)/2);
+            error=funct(f,xk);
             if(abs(error)<=tol)
             {
                 break;
@@ -43,7 +41,7 @@ vector<ex> biseccion(ex a,ex b,string f,ex tol,int iterMax)
             }
             else
             {
-                cout << "Ninguno de los nuevos intervalos cumple con el teorema de Bolzano" << endl;
+                cout<<"Ninguno de los nuevos intervalos cumple con el teorema de Bolzano"<<endl;
                 output.push_back('x');
                 return output;
             }
@@ -52,7 +50,6 @@ vector<ex> biseccion(ex a,ex b,string f,ex tol,int iterMax)
         output.push_back(xk);
         output.push_back(abs(error));
         output.push_back(k);
-
         return output;
     }
     cout<<"La funcion no cumple con el teorema de Bolzano en el intervalo especificado"<<endl;
@@ -60,13 +57,15 @@ vector<ex> biseccion(ex a,ex b,string f,ex tol,int iterMax)
     return output;
 }
 
-
-
-
 int main()
 {
+    Digits=10;
     string f="pow(cos(2*x),2)-pow(x,2)";
-    vector<ex> valores =biseccion(0,Pi,f,1e-100,2500);
+    ex a=0;
+    ex b=Pi;
+    ex tol=1e-100;
+    int iterMax=2500;
+    vector<ex> valores=biseccion(a,b,f,tol,iterMax);
     if(valores[0]!='x')
     {
         cout<<"El valor aproximado de x es "<<valores[0].evalf()<<" con un error de "<<valores[1]<<" encontrado en "<<valores[2]<<" iteraciones"<<endl;
