@@ -16,7 +16,7 @@ ex funct(string f,ex value)
 }
 ex funct_aux(string f,ex x_0,ex x_1)
 {
-    ex f_aux=x_1-(((x_1-x_0)/(funct(f,x_1)-funct(f,x_0)))* funct(f,x_1));
+    ex f_aux=x_1-(((x_1-x_0)/(funct(f,x_1)-funct(f,x_0))))* funct(f,x_1);
     return evalf(f_aux);
 }
 vector<ex>secante(string f,ex x0,ex x1,ex tol,int iterMax)

@@ -1,4 +1,5 @@
 function Newton_Raphson
+  pkg load symbolic
   f='(cos(2*x)^2)-x^2';
   x0=100;
   tol=1*10^-100;
