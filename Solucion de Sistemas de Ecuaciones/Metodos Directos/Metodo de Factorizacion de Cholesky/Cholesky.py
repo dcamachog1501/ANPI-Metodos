@@ -71,12 +71,12 @@ def fact_cholesky(a,b):
     print("Aplicando substitucion por A techo...\n")
     return fact_cholesky(at,bt)
 
-a=np.matrix(([1,-1,2],
-             [-2,0,4],
-             [0,-2,7]))
-b=np.matrix(([0],
-             [2],
-             [5]))
+a=np.matrix(([4,-2,1],
+             [20,-7,12],
+             [-8,13,17]))
+b=np.matrix(([11],
+             [70],
+             [17]))
 
 xk=fact_cholesky(a,b)
 if(xk is not None):
