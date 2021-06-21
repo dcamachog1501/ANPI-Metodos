@@ -18,13 +18,13 @@ function[xk]=gaussiana(a,b)
   xk=zeros(1,n);
   if det(a)!=0
     [at,bt]=triang_sup(a,b);
-    [xk]=sust_atras(at,bt);
+    [xk]=sust_adelante(at,bt);
   else
     xk(1)=inf;
   endif
   return
 end
-function[xk]=sust_atras(a,b)
+function[xk]=sust_adelante(a,b)
   n=size(b,1);%numero de filas en la matriz
   xk=zeros(1,n);%array de 1xn dimensiones lleno de n 0's
   for i=n:-1:1

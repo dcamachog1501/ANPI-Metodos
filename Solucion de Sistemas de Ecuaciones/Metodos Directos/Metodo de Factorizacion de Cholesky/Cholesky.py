@@ -1,7 +1,7 @@
 import numpy as np
 from math import *
 
-def sust_atras(a,b):
+def sust_adelante(a,b):
     n = len(b)
     xk=np.zeros((1,n))
     for i in range(n-1,-1,-1):
@@ -11,7 +11,7 @@ def sust_atras(a,b):
         xi=(1/a[i,i])*(b[i]-suma)
         xk[0,i]=xi
     return xk
-def sust_adelante(a,b):
+def sust_atras(a,b):
     n=len(b)
     xk = np.zeros((1, n))
     for i in range(n):
@@ -64,19 +64,19 @@ def cholesky_l(a):
 def fact_cholesky(a,b):
     l=cholesky_l(a)
     if(l is not None):
-        yk=sust_adelante(l,b)
-        return sust_atras(l.transpose(),yk.transpose())
+        yk=sust_atras(l,b)
+        return sust_adelante(l.transpose(),yk.transpose())
     at=np.matmul(a.transpose(),a)
     bt=np.matmul(a.transpose(),b)
     print("Aplicando substitucion por A techo...\n")
     return fact_cholesky(at,bt)
 
-a=np.matrix(([4,-2,1],
-             [20,-7,12],
-             [-8,13,17]))
-b=np.matrix(([11],
-             [70],
-             [17]))
+a=np.matrix(([6,15,55],
+             [15,55,225],
+             [55,225,979]))
+b=np.matrix(([76],
+             [295],
+             [1259]))
 
 xk=fact_cholesky(a,b)
 if(xk is not None):

@@ -42,7 +42,6 @@ def dc(f,variables,iniciales,tol,iterMax):
             f_temp=f.subs(zip(var_temp,val_temp))
             xk[j]=opt.fmin(lambdify(vars[j],f_temp),0,disp=False)[0]
         error=norm(gradientEval(grdf,vars,xk))
-        print(abs(error))
         if(error<=tol):
             return (xk,error,k)
     return (xk,error,k)

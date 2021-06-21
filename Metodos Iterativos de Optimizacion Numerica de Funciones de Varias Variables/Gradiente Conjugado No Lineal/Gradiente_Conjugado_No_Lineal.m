@@ -14,7 +14,7 @@ function[xk,error,k]=gcnl(f,variables,iniciales,tol,iterMax)
   warning('off', 'all');
   eval(["syms " variables ";"])
   eval(["vars=[" variables "];"]);
-  eval(["xk=[" iniciales "]';"]);%Debe ser traspuestyo para poder operarlo con gk y dk
+  eval(["xk=[" iniciales "]';"]);%Debe ser traspuesto para poder operarlo con gk y dk
   f=sym(f);
   grdf=gradient(f,vars);
   grs=sym(grdf);

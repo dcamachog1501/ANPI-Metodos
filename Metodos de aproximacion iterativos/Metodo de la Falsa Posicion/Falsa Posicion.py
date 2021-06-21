@@ -45,7 +45,7 @@ def falsa_posicion(f,a,b,tol,iterMax):
     else:
         print("La funcion provista no es continua en el intervalo espcificado")
         return (None,None,None)
-f="cos(2*x)**2-x**2"
-valores=falsa_posicion(f,0,pi,1e-10,2500)
+f="sin(x)**2+x**2-1"
+valores=falsa_posicion(f,0,2,10**-10,2500)
 if(valores[0]!=None):
     print("La aproximacion encontrada es x= "+str(valores[0])+" con un error de "+str(valores[1])+" en "+str(valores[2])+" iteraciones")

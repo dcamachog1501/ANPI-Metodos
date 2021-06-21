@@ -10,13 +10,12 @@ def triang_sup(a,b):
             mik=a_aumt[i,k]/a_aumt[k,k]
             for j in range(k,n+1):
                 a_aumt[i,j]=a_aumt[i,j]-mik*a_aumt[k,j];
-                print(mik)
-                print(a_aumt)
+            
     at=a_aumt[0:n+1,0:n]
     bt=a_aumt[0:n+1,n]
 
     return (at,bt)
-def sust_atras(a,b):
+def sust_adelante(a,b):
     n = len(b)
     xk=np.zeros((1,n))
     for i in range(n-1,-1,-1):
@@ -30,7 +29,7 @@ def sust_atras(a,b):
 def gaussiana(a,b):
     if(np.linalg.det(a)!=0):
         triang=triang_sup(a,b)
-        return sust_atras(triang[0],triang[1])
+        return sust_adelante(triang[0],triang[1])
     return ([None])
     
 

@@ -1,6 +1,8 @@
 import numpy as np
 from math import *
 
+#Revisar resultados(Para algunos casos si sirve como deberia,pero para otros no)
+
 def fact_lu(a,b):
     lu_mat=lu(a)
     if lu_mat!=None:
@@ -57,4 +59,4 @@ b=np.matrix(([11],
              [17]))
 xk=fact_lu(a,b)
 if(xk is not None):
-    print("Las soluciones dle sitema de ecuaciones son: \nxk="+str(xk))
+    print("Las soluciones del sistema de ecuaciones son: \nxk="+str(xk))
